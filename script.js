@@ -55,3 +55,20 @@ function globalSearchAI() {
             }
         });
 }
+function filterAI(type) {
+    const items = document.getElementsByClassName("ai-item");
+
+    for (let i = 0; i < items.length; i++) {
+        const badge = items[i].querySelector(".badge");
+
+        if (type === "all") {
+            items[i].style.display = "block";
+        } 
+        else if (badge && badge.classList.contains(type)) {
+            items[i].style.display = "block";
+        } 
+        else {
+            items[i].style.display = "none";
+        }
+    }
+}

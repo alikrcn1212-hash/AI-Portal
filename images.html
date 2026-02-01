@@ -18,6 +18,11 @@
         onkeyup="searchAI()"
         style="padding:10px; width:300px; border-radius:8px; border:none; margin:20px;"
     >
+<div class="filters">
+    <button onclick="filterAI('all')">Hepsi</button>
+    <button onclick="filterAI('free')">🟢 Ücretsiz</button>
+    <button onclick="filterAI('paid')">🔴 Ücretli</button>
+</div>
 
     <div class="menu" id="aiContainer"></div>
 

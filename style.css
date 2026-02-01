@@ -16,7 +16,7 @@ p {
     color: #cbd5f5;
 }
 
-.menu a {
+.menu a, {
     display: block;
     margin: 20px auto;
     padding: 15px;
@@ -64,4 +64,23 @@ p {
 
 .badge.paid {
     background: #ef4444;
+}
+.filters {
+    margin: 20px 0;
+}
+
+.filters button {
+    background: #334155;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.filters button:hover {
+    background: #475569;
 }
