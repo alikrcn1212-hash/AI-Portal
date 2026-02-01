@@ -72,3 +72,38 @@ function filterAI(type) {
         }
     }
 }
+
+function toggleTheme() {
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    document.body.classList.toggle("light");
+
+    if (document.body.classList.contains("light")) {
+        localStorage.setItem("theme", "light");
+        icon.innerText = "☀️";
+        text.innerText = "Light";
+    } else {
+        localStorage.setItem("theme", "dark");
+        icon.innerText = "🌙";
+        text.innerText = "Dark";
+    }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    if (!icon || !text) return;
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light");
+        icon.innerText = "☀️";
+        text.innerText = "Light";
+    } else {
+        document.body.classList.remove("light");
+        icon.innerText = "🌙";
+        text.innerText = "Dark";
+    }
+});

@@ -84,3 +84,53 @@ p {
 .filters button:hover {
     background: #475569;
 }
+/* Tema butonu */
+#themeToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #e5e7eb;
+    color: #111;
+    font-weight: bold;
+    z-index: 999;
+}
+
+/* Light mode */
+body.light {
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+body.light p {
+    color: #334155;
+}
+
+body.light .ai-item {
+    background: #e5e7eb;
+    color: #0f172a;
+}
+
+body.light .menu a {
+    background-color: #2563eb;
+    color: white;
+}
+body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.ai-item,
+.menu a {
+    transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease;
+}
+#themeToggle {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#themeToggle:hover {
+    transform: scale(1.08);
+}
