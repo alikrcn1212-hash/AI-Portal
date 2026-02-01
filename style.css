@@ -134,3 +134,48 @@ body {
 #themeToggle:hover {
     transform: scale(1.08);
 }
+.home-menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.home-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 360px;
+    padding: 25px;
+    background: #1f2937;
+    border-radius: 18px;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.home-card:hover {
+    background: #273449;
+    transform: translateY(-6px);
+}
+
+.home-card .icon {
+    font-size: 48px;
+}
+
+.home-card h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.home-card p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #cbd5f5;
+}
+.back-card {
+    margin: 50px auto 0;
+    max-width: 360px;
+    justify-content: center;
+}
