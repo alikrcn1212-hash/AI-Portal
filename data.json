@@ -52,32 +52,58 @@
   }
 ],
   "videos": [
-    {
-      "name": "Runway",
-      "url": "https://runwayml.com",
-      "price": "paid"
-    },
-    {
-      "name": "Pika",
-      "url": "https://pika.art",
-      "price": "free"
-    },
-    {
-      "name": "Synthesia",
-      "url": "https://www.synthesia.io",
-      "price": "paid"
-    },
-    {
-      "name": "Kaiber",
-      "url": "https://kaiber.ai",
-      "price": "paid"
-    },
-    {
-      "name": "Luma AI",
-      "url": "https://lumalabs.ai",
-      "price": "free"
-    }
-  ],
+  {
+    "name": "Runway",
+    "url": "https://runwayml.com",
+    "price": "paid"
+  },
+  {
+    "name": "Pika",
+    "url": "https://pika.art",
+    "price": "free"
+  },
+  {
+    "name": "Synthesia",
+    "url": "https://www.synthesia.io",
+    "price": "paid"
+  },
+  {
+    "name": "Kaiber",
+    "url": "https://kaiber.ai",
+    "price": "paid"
+  },
+  {
+    "name": "Luma AI",
+    "url": "https://lumalabs.ai",
+    "price": "free"
+  },
+  {
+    "name": "HeyGen",
+    "url": "https://www.heygen.com",
+    "price": "paid"
+  },
+  {
+    "name": "InVideo AI",
+    "url": "https://invideo.io",
+    "price": "free"
+  },
+  {
+    "name": "Pictory",
+    "url": "https://pictory.ai",
+    "price": "paid"
+  },
+  {
+    "name": "DeepBrain AI",
+    "url": "https://www.deepbrain.io",
+    "price": "paid"
+  },
+  {
+    "name": "VEED AI",
+    "url": "https://www.veed.io",
+    "price": "free"
+  }
+]
+
   "audio": [
     {
       "name": "ElevenLabs",
