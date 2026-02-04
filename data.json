@@ -129,6 +129,30 @@
       "name": "Voicemod",
       "url": "https://www.voicemod.net",
       "price": "free"
-    }
-  ]
+    },
+{
+  "name": "Descript",
+  "url": "https://www.descript.com",
+  "price": "free"
+},
+{
+  "name": "Speechify",
+  "url": "https://speechify.com",
+  "price": "free"
+},
+{
+  "name": "Resemble AI",
+  "url": "https://www.resemble.ai",
+  "price": "paid"
+},
+{
+  "name": "WellSaid Labs",
+  "url": "https://www.wellsaidlabs.com",
+  "price": "paid"
+},
+{
+  "name": "LOVO AI",
+  "url": "https://www.lovo.ai",
+  "price": "free"
 }
+
