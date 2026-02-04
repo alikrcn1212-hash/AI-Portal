@@ -1,31 +1,56 @@
 {
-  "images": [
-    {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "price": "paid"
-    },
-    {
-      "name": "DALL·E",
-      "url": "https://openai.com/dall-e",
-      "price": "free"
-    },
-    {
-      "name": "Leonardo AI",
-      "url": "https://leonardo.ai",
-      "price": "free"
-    },
-    {
-      "name": "Bing Image Creator",
-      "url": "https://www.bing.com/images/create",
-      "price": "free"
-    },
-    {
-      "name": "Playground AI",
-      "url": "https://playgroundai.com",
-      "price": "free"
-    }
-  ],
+"images": [
+  {
+    "name": "Midjourney",
+    "url": "https://www.midjourney.com",
+    "price": "paid"
+  },
+  {
+    "name": "DALL·E",
+    "url": "https://openai.com/dall-e",
+    "price": "free"
+  },
+  {
+    "name": "Leonardo AI",
+    "url": "https://leonardo.ai",
+    "price": "free"
+  },
+  {
+    "name": "Bing Image Creator",
+    "url": "https://www.bing.com/images/create",
+    "price": "free"
+  },
+  {
+    "name": "Playground AI",
+    "url": "https://playgroundai.com",
+    "price": "free"
+  },
+  {
+    "name": "Adobe Firefly",
+    "url": "https://firefly.adobe.com",
+    "price": "free"
+  },
+  {
+    "name": "NightCafe",
+    "url": "https://nightcafe.studio",
+    "price": "free"
+  },
+  {
+    "name": "Artbreeder",
+    "url": "https://www.artbreeder.com",
+    "price": "free"
+  },
+  {
+    "name": "Craiyon",
+    "url": "https://www.craiyon.com",
+    "price": "free"
+  },
+  {
+    "name": "Ideogram",
+    "url": "https://ideogram.ai",
+    "price": "free"
+  }
+],
   "videos": [
     {
       "name": "Runway",
