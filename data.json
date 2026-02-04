@@ -54,3 +54,31 @@
     }
   ]
 }
+,
+  "audio": [
+    {
+      "name": "ElevenLabs",
+      "url": "https://elevenlabs.io",
+      "price": "free"
+    },
+    {
+      "name": "Murf AI",
+      "url": "https://murf.ai",
+      "price": "paid"
+    },
+    {
+      "name": "PlayHT",
+      "url": "https://play.ht",
+      "price": "free"
+    },
+    {
+      "name": "Soundraw",
+      "url": "https://soundraw.io",
+      "price": "paid"
+    },
+    {
+      "name": "Voicemod",
+      "url": "https://www.voicemod.net",
+      "price": "free"
+    }
+  ]

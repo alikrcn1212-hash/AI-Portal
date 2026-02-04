@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ses Yapan AI'lar | AI Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🎧 Ses Yapan Yapay Zekâlar</h1>
+    <p>Metinden konuşma, seslendirme ve müzik üreten AI araçları</p>
+
+    <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="🔍 Yapay zekâ ara..." 
+        onkeyup="searchAI()"
+        style="padding:10px; width:300px; border-radius:8px; border:none; margin:20px;"
+    >
+
+    <div class="menu" id="aiContainer"></div>
+
+    <br>
+    <a href="index.html">⬅️ Ana Sayfa</a>
+
+    <script src="script.js"></script>
+    <script>
+        loadAI("audio");
+    </script>
+
+</body>
+</html>
