@@ -155,6 +155,58 @@
   "url": "https://www.lovo.ai",
   "price": "free"
 }
-  ]
-}
+  ],
+
+"text": [
+  {
+    "name": "ChatGPT",
+    "url": "https://chat.openai.com",
+    "price": "free"
+  },
+  {
+    "name": "Claude",
+    "url": "https://claude.ai",
+    "price": "free"
+  },
+  {
+    "name": "Jasper AI",
+    "url": "https://www.jasper.ai",
+    "price": "paid"
+  },
+  {
+    "name": "Copy.ai",
+    "url": "https://www.copy.ai",
+    "price": "free"
+  },
+  {
+    "name": "Writesonic",
+    "url": "https://writesonic.com",
+    "price": "free"
+  },
+  {
+    "name": "Rytr",
+    "url": "https://rytr.me",
+    "price": "free"
+  },
+  {
+    "name": "Notion AI",
+    "url": "https://www.notion.so/product/ai",
+    "price": "paid"
+  },
+  {
+    "name": "Sudowrite",
+    "url": "https://www.sudowrite.com",
+    "price": "paid"
+  },
+  {
+    "name": "Perplexity AI",
+    "url": "https://www.perplexity.ai",
+    "price": "free"
+  },
+  {
+    "name": "Anyword",
+    "url": "https://anyword.com",
+    "price": "paid"
+  }
+]
 
