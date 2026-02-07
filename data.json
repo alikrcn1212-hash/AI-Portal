@@ -172,6 +172,7 @@
     "name": "Jasper AI",
     "url": "https://www.jasper.ai",
     "price": "paid"
+    "affiliate": true
   },
   {
     "name": "Copy.ai",
