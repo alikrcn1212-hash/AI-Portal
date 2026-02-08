@@ -107,3 +107,22 @@ window.addEventListener("DOMContentLoaded", () => {
         text.innerText = "Dark";
     }
 });
+let currentLang = "tr";
+
+function toggleLang() {
+  const langText = document.getElementById("langText");
+  const langBtn = document.getElementById("langToggle");
+
+  langBtn.style.transform = "scale(0.95)";
+  setTimeout(() => langBtn.style.transform = "", 120);
+
+  if (currentLang === "tr") {
+    currentLang = "en";
+    langText.innerText = "EN";
+    langBtn.classList.add("active");
+  } else {
+    currentLang = "tr";
+    langText.innerText = "TR";
+    langBtn.classList.remove("active");
+  }
+}
