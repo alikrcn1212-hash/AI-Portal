@@ -144,20 +144,14 @@ function toggleLang() {
   }
 
   translatePage(currentLang);
+
+// aktif kategori varsa onu yeniden yükle
+const activeCategory = document.body.dataset.page;
+
+if (activeCategory && document.getElementById("aiContainer")) {
+  loadAI(activeCategory);
 }
-const translations = {
-  en: {
-    "Ücretsiz": "Free",
-    "Ücretli": "Paid",
-    "Hepsi": "All",
-    "Ana Sayfa": "Home"
-  },
-  tr: {
-    "Free": "Ücretsiz",
-    "Paid": "Ücretli",
-    "All": "Hepsi",
-    "Home": "Ana Sayfa"
-  }
+
 };
 function translatePage(lang) {
 
