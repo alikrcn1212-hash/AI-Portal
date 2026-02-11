@@ -127,21 +127,22 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-let currentLang = "tr";
+let currentLang = localStorage.getItem("lang") || "tr";
+
+function applyTranslations() {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    el.innerText = translations[currentLang][key];
+  });
+}
 
 function toggleLang() {
-  const langText = document.getElementById("langText");
-  const langBtn = document.getElementById("langToggle");
+  currentLang = currentLang === "tr" ? "en" : "tr";
+  localStorage.setItem("lang", currentLang);
+  applyTranslations();
+}
 
-  if (currentLang === "tr") {
-    currentLang = "en";
-    langText.innerText = "EN";
-    langBtn.classList.add("active");
-  } else {
-    currentLang = "tr";
-    langText.innerText = "TR";
-    langBtn.classList.remove("active");
-  }
+window.addEventListener("DOMContentLoaded", applyTranslations);
 
   translatePage(currentLang);
 
