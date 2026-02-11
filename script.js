@@ -126,32 +126,20 @@ function toggleLang() {
     langText.innerText = "TR";
     langBtn.classList.remove("active");
   }
+
+  translatePage(currentLang); // ⭐ ÇOK ÖNEMLİ
 }
 const translations = {
   en: {
-    "🖼️ Resim Yapan Yapay Zekâlar": "🖼️ AI Image Generation Tools",
-    "Metinden görsel üreten popüler yapay zekâ araçları":
-      "Popular AI tools that generate images from text",
     "Ücretsiz": "Free",
     "Ücretli": "Paid",
     "Hepsi": "All",
     "Ana Sayfa": "Home"
   },
-  tr: {}
+  tr: {
+    "Free": "Ücretsiz",
+    "Paid": "Ücretli",
+    "All": "Hepsi",
+    "Home": "Ana Sayfa"
+  }
 };
-let currentLang = "tr";
-
-function translatePage(lang) {
-  currentLang = lang;
-
-  document.querySelectorAll("body *").forEach(el => {
-    el.childNodes.forEach(node => {
-      if (node.nodeType === 3) {
-        const text = node.nodeValue.trim();
-        if (translations[lang][text]) {
-          node.nodeValue = translations[lang][text];
-        }
-      }
-    });
-  });
-}
