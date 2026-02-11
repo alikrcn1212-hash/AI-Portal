@@ -118,27 +118,30 @@ function searchAI() {
 }
 
 function loadAI(type) {
-    fetch("data.json")
-        .then(response => response.json())
-        .then(data => {
-            let container = document.getElementById("aiContainer");
-            container.innerHTML = "";
+  fetch("data.json")
+    .then(response => response.json())
+    .then(data => {
+      let container = document.getElementById("aiContainer");
 
-            data[type].forEach(ai => {
-                let a = document.createElement("a");
-                a.href = ai.url;
-                a.target = "_blank";
-                a.className = "ai-item";
-                a.innerHTML = `
-    <span>${ai.name}</span>
-    <span class="badge ${ai.price}">
-        ${ai.price === "free" ? "Ücretsiz" : "Ücretli"}
-    </span>
-`;
+      container.dataset.type = type; // dili değiştirince tekrar yüklemek için
+      container.innerHTML = "";
 
-                container.appendChild(a);
-            });
-        });
+      data[type].forEach(ai => {
+        let a = document.createElement("a");
+        a.href = ai.url;
+        a.target = "_blank";
+        a.className = "ai-item";
+
+        const priceText = translations[currentLang][ai.price] || ai.price;
+
+        a.innerHTML = `
+          <span>${ai.name}</span>
+          <span class="badge ${ai.price}">${priceText}</span>
+        `;
+
+        container.appendChild(a);
+      });
+    });
 }
 function globalSearchAI() {
     let input = document.getElementById("globalSearch").value.toLowerCase();
