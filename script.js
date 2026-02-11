@@ -144,7 +144,6 @@ function toggleLang() {
   }
 
   translatePage(currentLang);
-loadAI("image");
 }
 const translations = {
   en: {
@@ -161,18 +160,28 @@ const translations = {
   }
 };
 function translatePage(lang) {
-  document.querySelectorAll("body *").forEach(el => {
+
+  // SADECE normal metinleri çevir
+  const elements = document.querySelectorAll("body *");
+
+  elements.forEach(el => {
+
+    // AI kartlarının içini ASLA çevirme
+    if (el.closest(".ai-item")) return;
+
     el.childNodes.forEach(node => {
+
       if (node.nodeType === 3) {
-        let text = node.nodeValue.trim();
+        const text = node.nodeValue.trim();
 
         if (translations[lang] && translations[lang][text]) {
           node.nodeValue = translations[lang][text];
         }
       }
+
     });
+
   });
 
-  // seçilen dili kaydet
   localStorage.setItem("lang", lang);
 }
