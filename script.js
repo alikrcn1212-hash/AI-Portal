@@ -23,7 +23,9 @@ function loadAI(type) {
                 a.innerHTML = `
     <span>${ai.name}</span>
     <span class="badge ${ai.price}">
-        ${ai.price === "free" ? "Ücretsiz" : "Ücretli"}
+        ${ai.price === "free"
+  ? (currentLang === "tr" ? "Ücretsiz" : "Free")
+  : (currentLang === "tr" ? "Ücretli" : "Paid")}
     </span>
 `;
 
@@ -91,21 +93,38 @@ function toggleTheme() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
-    const icon = document.getElementById("themeIcon");
-    const text = document.getElementById("themeText");
 
-    if (!icon || !text) return;
+  // THEME
+  const savedTheme = localStorage.getItem("theme");
+  const icon = document.getElementById("themeIcon");
+  const text = document.getElementById("themeText");
 
+  if (icon && text) {
     if (savedTheme === "light") {
-        document.body.classList.add("light");
-        icon.innerText = "☀️";
-        text.innerText = "Light";
+      document.body.classList.add("light");
+      icon.innerText = "☀️";
+      text.innerText = "Light";
     } else {
-        document.body.classList.remove("light");
-        icon.innerText = "🌙";
-        text.innerText = "Dark";
+      document.body.classList.remove("light");
+      icon.innerText = "🌙";
+      text.innerText = "Dark";
     }
+  }
+
+  // LANGUAGE
+  const savedLang = localStorage.getItem("lang");
+
+  if (savedLang) {
+    currentLang = savedLang;
+
+    const langText = document.getElementById("langText");
+    const langBtn = document.getElementById("langToggle");
+
+    if (langText) langText.innerText = savedLang.toUpperCase();
+    if (langBtn && savedLang === "en") langBtn.classList.add("active");
+
+    translatePage(savedLang);
+  }
 });
 
 let currentLang = "tr";
@@ -113,9 +132,6 @@ let currentLang = "tr";
 function toggleLang() {
   const langText = document.getElementById("langText");
   const langBtn = document.getElementById("langToggle");
-
-  langBtn.style.transform = "scale(0.95)";
-  setTimeout(() => langBtn.style.transform = "", 120);
 
   if (currentLang === "tr") {
     currentLang = "en";
@@ -127,7 +143,8 @@ function toggleLang() {
     langBtn.classList.remove("active");
   }
 
-  translatePage(currentLang); // ⭐ ÇOK ÖNEMLİ
+  translatePage(currentLang);
+loadAI("image");
 }
 const translations = {
   en: {
@@ -143,3 +160,19 @@ const translations = {
     "Home": "Ana Sayfa"
   }
 };
+function translatePage(lang) {
+  document.querySelectorAll("body *").forEach(el => {
+    el.childNodes.forEach(node => {
+      if (node.nodeType === 3) {
+        let text = node.nodeValue.trim();
+
+        if (translations[lang] && translations[lang][text]) {
+          node.nodeValue = translations[lang][text];
+        }
+      }
+    });
+  });
+
+  // seçilen dili kaydet
+  localStorage.setItem("lang", lang);
+}
