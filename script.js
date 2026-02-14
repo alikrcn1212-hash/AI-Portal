@@ -105,13 +105,22 @@ function toggleLang() {
   localStorage.setItem("lang", currentLang);
 
   const langText = document.getElementById("langText");
+  const langBtn = document.getElementById("langToggle"); // ekledik
+
   if (langText) langText.innerText = currentLang.toUpperCase();
 
   applyTranslations();
 
+  // active class ekle / kaldır
+  if (langBtn) {
+    if (currentLang === "en") langBtn.classList.add("active");
+    else langBtn.classList.remove("active");
+  }
+
+  // AI kartlarını yeniden yükle
   const activeCategory = document.body.dataset.page;
   if (activeCategory && document.getElementById("aiContainer")) {
-    loadAI(activeCategory);
+      loadAI(activeCategory);
   }
 }
 
