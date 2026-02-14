@@ -93,17 +93,6 @@ function toggleTheme() {
 }
 let currentLang = localStorage.getItem("lang") || "tr";
 
-const translations = {
-  tr: {
-    home: "Ana Sayfa",
-    all: "Hepsi"
-  },
-  en: {
-    home: "Home",
-    all: "All"
-  }
-};
-
 function applyTranslations() {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
@@ -120,7 +109,6 @@ function toggleLang() {
 
   applyTranslations();
 
-  // Eğer aktif sayfada AI kartları varsa tekrar yükle
   const activeCategory = document.body.dataset.page;
   if (activeCategory && document.getElementById("aiContainer")) {
     loadAI(activeCategory);
@@ -146,7 +134,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   } // <-- bu if kapanışı eksikti
 
-  // Aktif sayfanın AI kartlarını yükle
   const activeCategory = document.body.dataset.page;
   if (activeCategory && document.getElementById("aiContainer")) {
     loadAI(activeCategory);
