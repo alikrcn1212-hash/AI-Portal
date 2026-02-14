@@ -91,6 +91,18 @@ function toggleTheme() {
         text.innerText = "Dark";
     }
 }
+let currentLang = localStorage.getItem("lang") || "tr";
+
+const translations = {
+  tr: {
+    home: "Ana Sayfa",
+    all: "Hepsi"
+  },
+  en: {
+    home: "Home",
+    all: "All"
+  }
+};
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -110,19 +122,6 @@ window.addEventListener("DOMContentLoaded", () => {
       text.innerText = "Dark";
     }
   }
-
-let currentLang = localStorage.getItem("lang") || "tr";
-
-const translations = {
-  tr: {
-    home: "Ana Sayfa",
-    all: "Hepsi"
-  },
-  en: {
-    home: "Home",
-    all: "All"
-  }
-};
 
 function applyTranslations() {
   document.querySelectorAll("[data-i18n]").forEach(el => {
