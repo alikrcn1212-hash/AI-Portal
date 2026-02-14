@@ -120,6 +120,11 @@ function toggleLang() {
 
   applyTranslations();
 
+  // Eğer aktif sayfada AI kartları varsa tekrar yükle
+  const activeCategory = document.body.dataset.page;
+  if (activeCategory && document.getElementById("aiContainer")) {
+    loadAI(activeCategory);
+  }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -139,8 +144,12 @@ window.addEventListener("DOMContentLoaded", () => {
       icon.innerText = "🌙";
       text.innerText = "Dark";
     }
-const activeCategory = document.body.dataset.page;
+  } // <-- bu if kapanışı eksikti
+
+  // Aktif sayfanın AI kartlarını yükle
+  const activeCategory = document.body.dataset.page;
   if (activeCategory && document.getElementById("aiContainer")) {
     loadAI(activeCategory);
-}
+  }
+
 });
