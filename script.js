@@ -111,23 +111,18 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // LANGUAGE
-  const savedLang = localStorage.getItem("lang");
-
-  if (savedLang) {
-    currentLang = savedLang;
-
-    const langText = document.getElementById("langText");
-    const langBtn = document.getElementById("langToggle");
-
-    if (langText) langText.innerText = savedLang.toUpperCase();
-    if (langBtn && savedLang === "en") langBtn.classList.add("active");
-
-    translatePage(savedLang);
-  }
-});
-
 let currentLang = localStorage.getItem("lang") || "tr";
+
+const translations = {
+  tr: {
+    home: "Ana Sayfa",
+    all: "Hepsi"
+  },
+  en: {
+    home: "Home",
+    all: "All"
+  }
+};
 
 function applyTranslations() {
   document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -139,44 +134,55 @@ function applyTranslations() {
 function toggleLang() {
   currentLang = currentLang === "tr" ? "en" : "tr";
   localStorage.setItem("lang", currentLang);
+
+  const langText = document.getElementById("langText");
+  if (langText) langText.innerText = currentLang.toUpperCase();
+
   applyTranslations();
+
+  const activeCategory = document.body.dataset.page;
+  if (activeCategory && document.getElementById("aiContainer")) {
+    loadAI(activeCategory);
+  }
 }
 
-window.addEventListener("DOMContentLoaded", applyTranslations);
 
-  translatePage(currentLang);
+window.addEventListener("DOMContentLoaded", () => {
 
-// aktif kategori varsa onu yeniden yükle
-const activeCategory = document.body.dataset.page;
+  // THEME
+  const savedTheme = localStorage.getItem("theme");
+  const icon = document.getElementById("themeIcon");
+  const text = document.getElementById("themeText");
 
-if (activeCategory && document.getElementById("aiContainer")) {
-  loadAI(activeCategory);
-}
+  if (icon && text) {
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+      icon.innerText = "☀️";
+      text.innerText = "Light";
+    } else {
+      document.body.classList.remove("light");
+      icon.innerText = "🌙";
+      text.innerText = "Dark";
+    }
+  }
 
-};
-function translatePage(lang) {
+  // LANGUAGE
+  const savedLang = localStorage.getItem("lang") || "tr";
+  currentLang = savedLang;
 
-  // SADECE normal metinleri çevir
-  const elements = document.querySelectorAll("body *");
+  const langText = document.getElementById("langText");
+  const langBtn = document.getElementById("langToggle");
 
-  elements.forEach(el => {
+  if (langText) langText.innerText = savedLang.toUpperCase();
+  if (langBtn && savedLang === "en") langBtn.classList.add("active");
 
-    // AI kartlarının içini ASLA çevirme
-    if (el.closest(".ai-item")) return;
+  applyTranslations();
 
-    el.childNodes.forEach(node => {
+  // AI kartlarını yükle
+  const activeCategory = document.body.dataset.page;
 
-      if (node.nodeType === 3) {
-        const text = node.nodeValue.trim();
+  if (activeCategory && document.getElementById("aiContainer")) {
+    loadAI(activeCategory);
+  }
 
-        if (translations[lang] && translations[lang][text]) {
-          node.nodeValue = translations[lang][text];
-        }
-      }
-
-    });
-
-  });
-
-  localStorage.setItem("lang", lang);
-}
+});
