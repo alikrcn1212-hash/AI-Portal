@@ -104,25 +104,6 @@ const translations = {
   }
 };
 
-window.addEventListener("DOMContentLoaded", () => {
-
-  // THEME
-  const savedTheme = localStorage.getItem("theme");
-  const icon = document.getElementById("themeIcon");
-  const text = document.getElementById("themeText");
-
-  if (icon && text) {
-    if (savedTheme === "light") {
-      document.body.classList.add("light");
-      icon.innerText = "☀️";
-      text.innerText = "Light";
-    } else {
-      document.body.classList.remove("light");
-      icon.innerText = "🌙";
-      text.innerText = "Dark";
-    }
-  }
-
 function applyTranslations() {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
@@ -144,3 +125,22 @@ function toggleLang() {
     loadAI(activeCategory);
   }
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  // THEME
+  const savedTheme = localStorage.getItem("theme");
+  const icon = document.getElementById("themeIcon");
+  const text = document.getElementById("themeText");
+
+  if (icon && text) {
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+      icon.innerText = "☀️";
+      text.innerText = "Light";
+    } else {
+      document.body.classList.remove("light");
+      icon.innerText = "🌙";
+      text.innerText = "Dark";
+    }
+  }
