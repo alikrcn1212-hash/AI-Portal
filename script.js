@@ -120,10 +120,6 @@ function toggleLang() {
 
   applyTranslations();
 
-  const activeCategory = document.body.dataset.page;
-  if (activeCategory && document.getElementById("aiContainer")) {
-    loadAI(activeCategory);
-  }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -143,4 +139,8 @@ window.addEventListener("DOMContentLoaded", () => {
       icon.innerText = "🌙";
       text.innerText = "Dark";
     }
-  }
+const activeCategory = document.body.dataset.page;
+  if (activeCategory && document.getElementById("aiContainer")) {
+    loadAI(activeCategory);
+}
+});
