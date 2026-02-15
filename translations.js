@@ -1,57 +1,93 @@
+// Dil seçimi
 let currentLang = localStorage.getItem("lang") || "tr";
 
+// Çeviri sözlüğü
 const translations = {
   tr: {
     title: "🤖 AI Portal",
     subtitle: "En iyi yapay zekâ araçlarını tek yerde keşfet",
+
+    searchPlaceholder: "🔍 Tüm yapay zekâlarda ara...",
+
     imageAI: "Resim Yapan AI’lar",
-    imageDesc: "Metinden görsel üreten yapay zekâ araçları",
+    imageAIDesc: "Metinden görsel üreten yapay zekâ araçları",
+
     videoAI: "Video Yapan AI’lar",
-    videoDesc: "Metin ve görselden video oluşturan AI’lar",
+    videoAIDesc: "Metin ve görselden video oluşturan AI’lar",
+
     audioAI: "Ses Yapan AI’lar",
-    audioDesc: "Konuşma, seslendirme ve müzik üreten yapay zekâlar",
+    audioAIDesc: "Konuşma, seslendirme ve müzik üreten yapay zekâlar",
+
     textAI: "Metin Yazan AI’lar",
-    textDesc: "Blog, makale ve içerik üreten yapay zekâlar",
+    textAIDesc: "Blog, makale ve içerik üreten yapay zekâlar",
+
     bestAI: "Best AI Tools",
-    bestDesc: "2026’nın en iyi yapay zekâ araçları",
-    lang: "TR",
-    home: "Ana",
-    image: "Resim",
-    video: "Video"
+    bestAIDesc: "2026’nın en iyi yapay zekâ araçları",
+
+    navHome: "Ana",
+    navImage: "Resim",
+    navVideo: "Video"
   },
+
   en: {
     title: "🤖 AI Portal",
     subtitle: "Discover the best AI tools in one place",
-    imageAI: "Image AI",
-    imageDesc: "AI tools that generate images from text",
-    videoAI: "Video AI",
-    videoDesc: "AI tools that generate videos from text and images",
-    audioAI: "Audio AI",
-    audioDesc: "AI tools that create speech and music",
-    textAI: "Text AI",
-    textDesc: "AI tools that write articles and content",
+
+    searchPlaceholder: "🔍 Search all AI tools...",
+
+    imageAI: "Image AI Tools",
+    imageAIDesc: "AI tools that generate images from text",
+
+    videoAI: "Video AI Tools",
+    videoAIDesc: "AI tools that create videos from text or images",
+
+    audioAI: "Audio AI Tools",
+    audioAIDesc: "AI tools for speech, voice and music generation",
+
+    textAI: "Text AI Tools",
+    textAIDesc: "AI tools that generate blogs and content",
+
     bestAI: "Best AI Tools",
-    bestDesc: "The best AI tools of 2026",
-    lang: "EN",
-    home: "Home",
-    image: "Image",
-    video: "Video"
+    bestAIDesc: "Top AI tools of 2026",
+
+    navHome: "Home",
+    navImage: "Images",
+    navVideo: "Video"
   }
 };
 
+// Sayfadaki metinleri uygular
 function applyTranslations() {
+
+  // normal text çevirileri
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    if(translations[currentLang][key]) {
+    if (translations[currentLang][key]) {
       el.innerText = translations[currentLang][key];
     }
   });
+
+  // placeholder çevirileri
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (translations[currentLang][key]) {
+      el.placeholder = translations[currentLang][key];
+    }
+  });
+
+  // dil buton yazısı
+  const langText = document.getElementById("langText");
+  if (langText) {
+    langText.innerText = currentLang.toUpperCase();
+  }
 }
 
+// Dil değiştir
 function toggleLang() {
   currentLang = currentLang === "tr" ? "en" : "tr";
   localStorage.setItem("lang", currentLang);
   applyTranslations();
 }
 
-window.addEventListener("DOMContentLoaded", applyTranslations);
+// Sayfa açılınca çeviri uygula
+document.addEventListener("DOMContentLoaded", applyTranslations);
