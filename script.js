@@ -91,31 +91,7 @@ function toggleTheme() {
         text.innerText = "Dark";
     }
 }
-let currentLang = localStorage.getItem("lang") || "tr";
 
-function applyTranslations() {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    el.innerText = translations[currentLang][key];
-  });
-}
-
-function toggleLang() {
-  currentLang = currentLang === "tr" ? "en" : "tr";
-  localStorage.setItem("lang", currentLang);
-
-  const langText = document.getElementById("langText");
-  const langBtn = document.getElementById("langToggle"); // ekledik
-
-  if (langText) langText.innerText = currentLang.toUpperCase();
-
-  applyTranslations();
-
-  // active class ekle / kaldır
-  if (langBtn) {
-    if (currentLang === "en") langBtn.classList.add("active");
-    else langBtn.classList.remove("active");
-  }
 
   // AI kartlarını yeniden yükle
   const activeCategory = document.body.dataset.page;
