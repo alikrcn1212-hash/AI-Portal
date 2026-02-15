@@ -1,103 +1,121 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
- <title>AI Portal | En İyi Yapay Zekâ Araçları (2026)</title>
 
-<meta name="description" content="AI Portal: resim, video, ses ve metin üreten en iyi yapay zekâ araçlarını keşfet. Ücretsiz ve ücretli AI listeleri, tek platformda.">
+<title>AI Portal | En İyi Yapay Zekâ Araçları (2026)</title>
+
+<meta name="description" content="AI Portal ile resim, video ve ses üreten en iyi yapay zekâ araçlarını keşfet. Ücretsiz ve ücretli AI listeleri tek bir yerde.">
 <meta name="keywords" content="AI, yapay zeka, ai tools, image ai, video ai">
 
-   <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <title>AI Portal | En İyi Yapay Zekâ Araçları (Resim, Video, Ses)</title>
+<meta name="keywords" content="AI, yapay zeka, ai portal, resim yapan ai, video yapan ai, ses yapan ai, ücretsiz ai araçları">
+<meta name="author" content="AI Portal">
 
-    <meta name="description" content="AI Portal ile resim, video ve ses üreten en iyi yapay zekâ araçlarını keşfet. Ücretsiz ve ücretli AI listeleri tek bir yerde.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="keywords" content="AI, yapay zeka, ai portal, resim yapan ai, video yapan ai, ses yapan ai, ücretsiz ai araçları">
+<meta property="og:title" content="AI Portal – En İyi Yapay Zekâ Araçları">
+<meta property="og:description" content="Resim, video ve ses üreten yapay zekâ araçlarını tek yerde keşfet.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alikrcn1212-hash.github.io/AI-Portal/">
 
-    <meta name="author" content="AI Portal">
+<meta http-equiv="Content-Language" content="tr">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 
-    <!-- Open Graph (Google & Sosyal Medya Önizleme) -->
-    <meta property="og:title" content="AI Portal – En İyi Yapay Zekâ Araçları">
-    <meta property="og:description" content="Resim, video ve ses üreten yapay zekâ araçlarını tek yerde keşfet.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alikrcn1212-hash.github.io/AI-Portal/">
-
-    <!-- Dil -->
-    <meta http-equiv="Content-Language" content="tr">
-
-    <link rel="stylesheet" href="style.css">
 <meta name="google-site-verification" content="NRiBjd7Ln1QMZNE0WXOTs0igWo0jItYLnbf5LGnm9AE" />
+
 </head>
+
 <body>
 
-    <h1>🤖 AI Portal</h1>
-    <p>En iyi yapay zekâ araçlarını tek yerde keşfet</p>
+<h1 data-i18n="title">🤖 AI Portal</h1>
+
+<p data-i18n="subtitle">
+En iyi yapay zekâ araçlarını tek yerde keşfet
+</p>
+
 <input 
-    type="text"
-    id="globalSearch"
-    placeholder="🔍 Tüm yapay zekâlarda ara..."
-    onkeyup="globalSearchAI()"
-    style="padding:12px; width:340px; border-radius:10px; border:none; margin:20px;"
+type="text"
+id="globalSearch"
+data-i18n-placeholder="searchPlaceholder"
+placeholder="🔍 Tüm yapay zekâlarda ara..."
+onkeyup="globalSearchAI()"
+style="padding:12px; width:340px; border-radius:10px; border:none; margin:20px;"
 >
 
 <div id="searchResults" class="menu"></div>
 
 <div class="menu home-menu">
-    <a href="images.html" class="home-card">
-        <div class="icon">🖼️</div>
-        <div class="text">
-            <h2>Resim Yapan AI’lar</h2>
-            <p>Metinden görsel üreten yapay zekâ araçları</p>
-        </div>
-    </a>
 
-    <a href="video.html" class="home-card">
-        <div class="icon">🎬</div>
-        <div class="text">
-            <h2>Video Yapan AI’lar</h2>
-            <p>Metin ve görselden video oluşturan AI’lar</p>
-        </div>
-    </a>
+<a href="images.html" class="home-card">
+<div class="icon">🖼️</div>
+<div class="text">
+<h2 data-i18n="imageAI">Resim Yapan AI’lar</h2>
+<p data-i18n="imageAIDesc">
+Metinden görsel üreten yapay zekâ araçları
+</p>
+</div>
+</a>
+
+<a href="video.html" class="home-card">
+<div class="icon">🎬</div>
+<div class="text">
+<h2 data-i18n="videoAI">Video Yapan AI’lar</h2>
+<p data-i18n="videoAIDesc">
+Metin ve görselden video oluşturan AI’lar
+</p>
+</div>
+</a>
+
 <a href="audio.html" class="home-card">
-    <div class="icon">🎧</div>
-    <div class="text">
-        <h2>Ses Yapan AI’lar</h2>
-        <p>Konuşma, seslendirme ve müzik üreten yapay zekâlar</p>
-    </div>
+<div class="icon">🎧</div>
+<div class="text">
+<h2 data-i18n="audioAI">Ses Yapan AI’lar</h2>
+<p data-i18n="audioAIDesc">
+Konuşma, seslendirme ve müzik üreten yapay zekâlar
+</p>
+</div>
 </a>
+
 <a href="text.html" class="home-card">
-  <div class="icon">✍️</div>
-  <div class="text">
-    <h2>Metin Yazan AI’lar</h2>
-    <p>Blog, makale ve içerik üreten yapay zekâlar</p>
-  </div>
+<div class="icon">✍️</div>
+<div class="text">
+<h2 data-i18n="textAI">Metin Yazan AI’lar</h2>
+<p data-i18n="textAIDesc">
+Blog, makale ve içerik üreten yapay zekâlar
+</p>
+</div>
 </a>
+
 <a href="best.html" class="home-card">
-  <div class="icon">🏆</div>
-  <div class="text">
-    <h2>Best AI Tools</h2>
-    <p>2026’nın en iyi yapay zekâ araçları</p>
-  </div>
+<div class="icon">🏆</div>
+<div class="text">
+<h2 data-i18n="bestAI">Best AI Tools</h2>
+<p data-i18n="bestAIDesc">
+2026’nın en iyi yapay zekâ araçları
+</p>
+</div>
 </a>
 
 </div>
 
 <script src="script.js"></script>
+
 <button id="themeToggle" onclick="toggleTheme()">
-    <span id="themeIcon">🌙</span>
-    <span id="themeText">Dark</span>
+<span id="themeIcon">🌙</span>
+<span id="themeText">Dark</span>
 </button>
+
 <button id="langToggle" onclick="toggleLang()">
-  <span class="globe">🌍</span>
-  <span id="langText">TR</span>
+<span class="globe">🌍</span>
+<span id="langText">TR</span>
 </button>
 
 <div class="mobile-nav">
-    <a href="index.html">🏠<span>Ana</span></a>
-    <a href="images.html">🖼️<span>Resim</span></a>
-    <a href="video.html">🎬<span>Video</span></a>
+<a href="index.html">🏠<span data-i18n="navHome">Ana</span></a>
+<a href="images.html">🖼️<span data-i18n="navImage">Resim</span></a>
+<a href="video.html">🎬<span data-i18n="navVideo">Video</span></a>
 </div>
 
 <script src="translations.js"></script>
