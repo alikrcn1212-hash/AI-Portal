@@ -1,9 +1,8 @@
-// script.js
+// script.js – Tam çalışan sürüm
 
-// Dil (TR/EN) – global
 let currentLang = localStorage.getItem("lang") || "tr";
 
-// AI Arama
+// AI arama
 function searchAI() {
     const input = document.getElementById("searchInput").value.toLowerCase();
     const items = document.getElementsByClassName("ai-item");
@@ -13,7 +12,7 @@ function searchAI() {
     }
 }
 
-// AI Kartlarını Yükleme
+// AI kartları yükleme
 function loadAI(type) {
     fetch("data.json")
         .then(res => res.json())
@@ -29,7 +28,9 @@ function loadAI(type) {
                 a.innerHTML = `
                     <span>${ai.name}</span>
                     <span class="badge ${ai.price}">
-                        ${ai.price === "free" ? (currentLang === "tr" ? "Ücretsiz" : "Free") : (currentLang === "tr" ? "Ücretli" : "Paid")}
+                        ${ai.price === "free"
+                            ? (currentLang === "tr" ? "Ücretsiz" : "Free")
+                            : (currentLang === "tr" ? "Ücretli" : "Paid")}
                     </span>
                 `;
                 container.appendChild(a);
@@ -49,12 +50,12 @@ function filterAI(type) {
     }
 }
 
-// Light/Dark Mod
+// Light/Dark mod
 function toggleTheme() {
     const icon = document.getElementById("themeIcon");
     const text = document.getElementById("themeText");
-    document.body.classList.toggle("light");
 
+    document.body.classList.toggle("light");
     if (document.body.classList.contains("light")) {
         localStorage.setItem("theme", "light");
         icon.innerText = "☀️";
@@ -66,9 +67,23 @@ function toggleTheme() {
     }
 }
 
+// Dil değiştirme
+function toggleLang() {
+    currentLang = currentLang === "tr" ? "en" : "tr";
+    localStorage.setItem("lang", currentLang);
+
+    // Kartları tekrar yükle
+    const activeCategory = document.body.dataset.page;
+    if (activeCategory && document.getElementById("aiContainer")) loadAI(activeCategory);
+
+    // Dil butonunu güncelle
+    const langText = document.getElementById("langText");
+    if (langText) langText.innerText = currentLang.toUpperCase();
+}
+
 // Sayfa açıldığında
 window.addEventListener("DOMContentLoaded", () => {
-    // Tema
+    // Theme ayarı
     const savedTheme = localStorage.getItem("theme");
     const icon = document.getElementById("themeIcon");
     const text = document.getElementById("themeText");
@@ -81,7 +96,11 @@ window.addEventListener("DOMContentLoaded", () => {
         text.innerText = document.body.classList.contains("light") ? "Light" : "Dark";
     }
 
-    // AI Kartlarını Yükle
+    // AI kartlarını yükle
     const activeCategory = document.body.dataset.page;
     if (activeCategory && document.getElementById("aiContainer")) loadAI(activeCategory);
+
+    // Dil butonunu güncelle
+    const langText = document.getElementById("langText");
+    if (langText) langText.innerText = currentLang.toUpperCase();
 });
