@@ -1,31 +1,3 @@
-let currentLang = localStorage.getItem("lang") || "tr";
-
-// AI kartlarını yükleme
-function loadAI(type) {
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            const container = document.getElementById("aiContainer");
-            container.innerHTML = "";
-
-            data[type].forEach(ai => {
-                const a = document.createElement("a");
-                a.href = ai.url;
-                a.target = "_blank";
-                a.className = "ai-item";
-                a.innerHTML = `
-                    <span>${ai.name}</span>
-                    <span class="badge ${ai.price}">
-                        ${ai.price === "free"
-                            ? (currentLang === "tr" ? "Ücretsiz" : "Free")
-                            : (currentLang === "tr" ? "Ücretli" : "Paid")}
-                    </span>
-                `;
-                container.appendChild(a);
-            });
-        })
-        .catch(err => console.error("AI kartları yüklenemedi:", err));
-}
 
 // Light/Dark modu
 function toggleTheme() {
