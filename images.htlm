@@ -2,86 +2,88 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Resim Yapan Yapay Zekâlar | En İyi Image AI Araçları</title>
-
-<meta name="description" content="Midjourney, DALL·E, Leonardo AI ve daha fazlası. Metinden görsel üreten en iyi yapay zekâ araçları listesi.">
-
-    <title>Resim Yapan AI'lar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title data-i18n="imageAI">🖼️ Resim Yapan AI’lar</title>
+    <meta name="description" content="Midjourney, DALL·E, Leonardo AI ve daha fazlası. Metinden görsel üreten en iyi yapay zekâ araçları listesi.">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body data-page="images">
 
-    <h1 id="mainTitle">🖼️ Resim Yapan Yapay Zekâlar</h1>
-    <p id="subTitle">Metinden görsel üreten popüler yapay zekâ araçları</p>
-<section class="category-intro">
-  <p>
-    Bu sayfada <strong>metinden görsel üreten yapay zekâ araçları</strong> listelenmiştir.
-    Midjourney, DALL·E, Leonardo AI gibi popüler image AI platformları sayesinde
-    dakikalar içinde yüksek kaliteli görseller oluşturabilirsiniz.
-  </p>
-  <p>
-    Aşağıda hem <strong>ücretsiz</strong> hem de <strong>ücretli</strong> AI image generator
-    araçlarını karşılaştırmalı olarak bulabilir, ihtiyacınıza en uygun olanı seçebilirsiniz.
-  </p>
-</section>
+    <h1 data-i18n="imageAI">🖼️ Resim Yapan Yapay Zekâlar</h1>
+    <p data-i18n="imageAIDesc">Metinden görsel üreten popüler yapay zekâ araçları</p>
+
+    <section class="category-intro">
+        <p>
+            Bu sayfada <strong>metinden görsel üreten yapay zekâ araçları</strong> listelenmiştir.
+            Midjourney, DALL·E, Leonardo AI gibi popüler image AI platformları sayesinde
+            dakikalar içinde yüksek kaliteli görseller oluşturabilirsiniz.
+        </p>
+        <p>
+            Aşağıda hem <strong>ücretsiz</strong> hem de <strong>ücretli</strong> AI image generator
+            araçlarını karşılaştırmalı olarak bulabilir, ihtiyacınıza en uygun olanı seçebilirsiniz.
+        </p>
+    </section>
 
     <input 
         type="text" 
         id="searchInput" 
+        data-i18n-placeholder="searchPlaceholder"
         placeholder="🔍 Yapay zekâ ara..." 
         onkeyup="searchAI()"
         style="padding:10px; width:300px; border-radius:8px; border:none; margin:20px;"
     >
-<div class="filters">
-    <button onclick="filterAI('all')">Hepsi</button>
-    <button onclick="filterAI('free')">🟢 Ücretsiz</button>
-    <button onclick="filterAI('paid')">🔴 Ücretli</button>
-</div>
+
+    <div class="filters">
+        <button onclick="filterAI('all')">Hepsi</button>
+        <button onclick="filterAI('free')">🟢 Ücretsiz</button>
+        <button onclick="filterAI('paid')">🔴 Ücretli</button>
+    </div>
 
     <div class="menu" id="aiContainer"></div>
-<section class="trust-text">
-  <h2>Bu listeler nasıl hazırlanıyor?</h2>
-  <p>
-    Burada yer alan yapay zekâ araçları; kullanım kolaylığı, çıktı kalitesi
-    ve topluluk geri bildirimleri dikkate alınarak seçilmiştir.
-  </p>
-</section>
-<p class="update-note">
-  Liste düzenli olarak güncellenmektedir.
-</p>
+
+    <section class="trust-text">
+        <h2>Bu listeler nasıl hazırlanıyor?</h2>
+        <p>
+            Burada yer alan yapay zekâ araçları; kullanım kolaylığı, çıktı kalitesi
+            ve topluluk geri bildirimleri dikkate alınarak seçilmiştir.
+        </p>
+    </section>
+    <p class="update-note">
+        Liste düzenli olarak güncellenmektedir.
+    </p>
 
     <br>
     <a href="index.html" class="home-card back-card">
-    <div class="icon">🏠</div>
-    <div class="text">
-        <h2>Ana Sayfa</h2>
-        <p>Tüm kategorilere geri dön</p>
-    </div>
-</a>
+        <div class="icon">🏠</div>
+        <div class="text">
+            <h2 data-i18n="navHome">Ana Sayfa</h2>
+            <p>Tüm kategorilere geri dön</p>
+        </div>
+    </a>
 
-    <!-- ÖNCE JS DOSYASI -->
+    <!-- Scriptler -->
+    <script src="translations.js"></script>
     <script src="script.js"></script>
-
-    <!-- SONRA loadAI ÇAĞRISI -->
     <script>
         loadAI("images");
     </script>
-<button id="themeToggle" onclick="toggleTheme()">
-    <span id="themeIcon">🌙</span>
-    <span id="themeText">Dark</span>
-</button>
-<button id="langToggle" onclick="toggleLang()">
-  <span class="globe">🌍</span>
-  <span id="langText">TR</span>
-</button>
 
-<div class="mobile-nav">
-    <a href="index.html">🏠<span>Ana</span></a>
-    <a href="images.html">🖼️<span>Resim</span></a>
-    <a href="video.html">🎬<span>Video</span></a>
-</div>
+    <!-- Light/Dark & Language Toggle -->
+    <button id="themeToggle" onclick="toggleTheme()">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">Dark</span>
+    </button>
+
+    <button id="langToggle" onclick="toggleLang()">
+        <span class="globe">🌍</span>
+        <span id="langText">TR</span>
+    </button>
+
+    <div class="mobile-nav">
+        <a href="index.html">🏠<span data-i18n="navHome">Ana</span></a>
+        <a href="images.html">🖼️<span data-i18n="navImage">Resim</span></a>
+        <a href="video.html">🎬<span data-i18n="navVideo">Video</span></a>
+    </div>
 
 </body>
 </html>
