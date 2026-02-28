@@ -1,3 +1,29 @@
+// AI kartlarını yükleme
+function loadAI(type) {
+    fetch("data.json")
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById("aiContainer");
+            container.innerHTML = "";
+
+            data[type].forEach(ai => {
+                const a = document.createElement("a");
+                a.href = ai.url;
+                a.target = "_blank";
+                a.className = "ai-item";
+                a.innerHTML = `
+                    <span>${ai.name}</span>
+                    <span class="badge ${ai.price}">
+                        ${ai.price === "free"
+                            ? (localStorage.getItem("lang") === "tr" ? "Ücretsiz" : "Free")
+                            : (localStorage.getItem("lang") === "tr" ? "Ücretli" : "Paid")}
+                    </span>
+                `;
+                container.appendChild(a);
+            });
+        })
+        .catch(err => console.error("AI kartları yüklenemedi:", err));
+}
 
 // Light/Dark modu
 function toggleTheme() {
@@ -16,31 +42,24 @@ function toggleTheme() {
     }
 }
 
-// Dil değiştirme ve mavi ışık efekti
+// Dil mavi ışık efekti
 function toggleLang() {
     const langButton = document.getElementById("langToggle");
 
-    currentLang = currentLang === "tr" ? "en" : "tr";
-    localStorage.setItem("lang", currentLang);
-
-    // AI kartlarını yeniden yükle
+    // AI kartlarını yeniden yükle (dil değişince badge de güncellenir)
     const activeCategory = document.body.dataset.page;
     if (activeCategory && document.getElementById("aiContainer")) loadAI(activeCategory);
 
-    // Buton üzerindeki yazıyı değiştir
-    const langText = document.getElementById("langText");
-    if (langText) langText.innerText = currentLang.toUpperCase();
-
     // Mavi ışık efekti
     if (langButton) {
-        if (currentLang === "en") langButton.classList.add("active");
+        if (localStorage.getItem("lang") === "en") langButton.classList.add("active");
         else langButton.classList.remove("active");
     }
 }
 
-// Arama ve filtreleme (önceki gibi)
+// AI arama
 function searchAI() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
+    const input = document.getElementById("searchInput")?.value.toLowerCase() || "";
     const items = document.getElementsByClassName("ai-item");
     for (let i = 0; i < items.length; i++) {
         const text = items[i].innerText.toLowerCase();
@@ -48,6 +67,7 @@ function searchAI() {
     }
 }
 
+// AI filtreleme
 function filterAI(type) {
     const items = document.getElementsByClassName("ai-item");
     for (let i = 0; i < items.length; i++) {
@@ -60,7 +80,7 @@ function filterAI(type) {
 
 // Sayfa yüklendiğinde
 window.addEventListener("DOMContentLoaded", () => {
-    // Theme
+    // Theme yükleme
     const savedTheme = localStorage.getItem("theme");
     const icon = document.getElementById("themeIcon");
     const text = document.getElementById("themeText");
@@ -78,9 +98,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // Dil butonu ışığı
     const langButton = document.getElementById("langToggle");
     if (langButton) {
-        if (currentLang === "en") langButton.classList.add("active");
+        if (localStorage.getItem("lang") === "en") langButton.classList.add("active");
         else langButton.classList.remove("active");
-        const langText = document.getElementById("langText");
-        if (langText) langText.innerText = currentLang.toUpperCase();
     }
 });
