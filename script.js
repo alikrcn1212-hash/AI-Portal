@@ -42,17 +42,24 @@ function toggleTheme() {
     }
 }
 
-// Dil mavi ışık efekti
+// Dil değiştirme ve mavi ışık efekti
 function toggleLang() {
     const langButton = document.getElementById("langToggle");
 
-    // AI kartlarını yeniden yükle (dil değişince badge de güncellenir)
+    // Translation.js'deki currentLang'i değiştir
+    currentLang = currentLang === "tr" ? "en" : "tr";
+    localStorage.setItem("lang", currentLang);
+
+    // Sayfa metinlerini çevir
+    applyTranslations();
+
+    // AI kartlarını yeniden yükle
     const activeCategory = document.body.dataset.page;
     if (activeCategory && document.getElementById("aiContainer")) loadAI(activeCategory);
 
     // Mavi ışık efekti
     if (langButton) {
-        if (localStorage.getItem("lang") === "en") langButton.classList.add("active");
+        if (currentLang === "en") langButton.classList.add("active");
         else langButton.classList.remove("active");
     }
 }
@@ -98,7 +105,10 @@ window.addEventListener("DOMContentLoaded", () => {
     // Dil butonu ışığı
     const langButton = document.getElementById("langToggle");
     if (langButton) {
-        if (localStorage.getItem("lang") === "en") langButton.classList.add("active");
+        if (currentLang === "en") langButton.classList.add("active");
         else langButton.classList.remove("active");
     }
+
+    // Sayfa metinlerini uygula
+    applyTranslations();
 });
