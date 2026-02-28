@@ -1,84 +1,58 @@
-function searchAI() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let items = document.getElementsByClassName("ai-item");
+// script.js
 
+// Dil (TR/EN) – global
+let currentLang = localStorage.getItem("lang") || "tr";
+
+// AI Arama
+function searchAI() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const items = document.getElementsByClassName("ai-item");
     for (let i = 0; i < items.length; i++) {
-        let text = items[i].innerText.toLowerCase();
+        const text = items[i].innerText.toLowerCase();
         items[i].style.display = text.includes(input) ? "block" : "none";
     }
 }
 
+// AI Kartlarını Yükleme
 function loadAI(type) {
     fetch("data.json")
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
-            let container = document.getElementById("aiContainer");
+            const container = document.getElementById("aiContainer");
             container.innerHTML = "";
 
             data[type].forEach(ai => {
-                let a = document.createElement("a");
+                const a = document.createElement("a");
                 a.href = ai.url;
                 a.target = "_blank";
                 a.className = "ai-item";
                 a.innerHTML = `
-    <span>${ai.name}</span>
-    <span class="badge ${ai.price}">
-        ${ai.price === "free"
-  ? (currentLang === "tr" ? "Ücretsiz" : "Free")
-  : (currentLang === "tr" ? "Ücretli" : "Paid")}
-    </span>
-`;
-
+                    <span>${ai.name}</span>
+                    <span class="badge ${ai.price}">
+                        ${ai.price === "free" ? (currentLang === "tr" ? "Ücretsiz" : "Free") : (currentLang === "tr" ? "Ücretli" : "Paid")}
+                    </span>
+                `;
                 container.appendChild(a);
             });
-        });
+        })
+        .catch(err => console.error("AI kartları yüklenemedi:", err));
 }
-function globalSearchAI() {
-    let input = document.getElementById("globalSearch").value.toLowerCase();
-    let resultsDiv = document.getElementById("searchResults");
-    resultsDiv.innerHTML = "";
 
-    if (input.length === 0) return;
-
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            for (let category in data) {
-                data[category].forEach(ai => {
-                    if (ai.name.toLowerCase().includes(input)) {
-                        let a = document.createElement("a");
-                        a.href = ai.url;
-                        a.target = "_blank";
-                        a.className = "ai-item";
-                        a.innerText = `${ai.name} (${category})`;
-                        resultsDiv.appendChild(a);
-                    }
-                });
-            }
-        });
-}
+// Ücretsiz/Ücretli filtreleme
 function filterAI(type) {
     const items = document.getElementsByClassName("ai-item");
-
     for (let i = 0; i < items.length; i++) {
         const badge = items[i].querySelector(".badge");
-
-        if (type === "all") {
-            items[i].style.display = "block";
-        } 
-        else if (badge && badge.classList.contains(type)) {
-            items[i].style.display = "block";
-        } 
-        else {
-            items[i].style.display = "none";
-        }
+        if (type === "all") items[i].style.display = "block";
+        else if (badge && badge.classList.contains(type)) items[i].style.display = "block";
+        else items[i].style.display = "none";
     }
 }
 
+// Light/Dark Mod
 function toggleTheme() {
     const icon = document.getElementById("themeIcon");
     const text = document.getElementById("themeText");
-
     document.body.classList.toggle("light");
 
     if (document.body.classList.contains("light")) {
@@ -92,36 +66,22 @@ function toggleTheme() {
     }
 }
 
-
-  // AI kartlarını yeniden yükle
-  const activeCategory = document.body.dataset.page;
-  if (activeCategory && document.getElementById("aiContainer")) {
-      loadAI(activeCategory);
-  }
-}
-
+// Sayfa açıldığında
 window.addEventListener("DOMContentLoaded", () => {
+    // Tema
+    const savedTheme = localStorage.getItem("theme");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
 
-  // THEME
-  const savedTheme = localStorage.getItem("theme");
-  const icon = document.getElementById("themeIcon");
-  const text = document.getElementById("themeText");
+    if (savedTheme === "light") document.body.classList.add("light");
+    else document.body.classList.remove("light");
 
-  if (icon && text) {
-    if (savedTheme === "light") {
-      document.body.classList.add("light");
-      icon.innerText = "☀️";
-      text.innerText = "Light";
-    } else {
-      document.body.classList.remove("light");
-      icon.innerText = "🌙";
-      text.innerText = "Dark";
+    if (icon && text) {
+        icon.innerText = document.body.classList.contains("light") ? "☀️" : "🌙";
+        text.innerText = document.body.classList.contains("light") ? "Light" : "Dark";
     }
-  } // <-- bu if kapanışı eksikti
 
-  const activeCategory = document.body.dataset.page;
-  if (activeCategory && document.getElementById("aiContainer")) {
-    loadAI(activeCategory);
-  }
-
+    // AI Kartlarını Yükle
+    const activeCategory = document.body.dataset.page;
+    if (activeCategory && document.getElementById("aiContainer")) loadAI(activeCategory);
 });
